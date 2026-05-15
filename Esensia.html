@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposta di Collaborazione — Esensia</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy:       #1a1a2e;
+    --navy-deep:  #111122;
+    --navy-mid:   #252545;
+    --gold:       #c9a84c;
+    --gold-light: #dfc07a;
+    --cream:      #f5f0e8;
+    --cream-dark: #ede7d8;
+    --charcoal:   #2c2c2c;
+    --muted:      #6b6b6b;
+    --white:      #ffffff;
+    --danger:     #8b3333;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--cream);
+    font-family: 'Inter', sans-serif;
+    color: var(--charcoal);
+    line-height: 1.65;
+  }
+
+  /* ── HEADER ── */
+  .site-header {
+    background: var(--navy-deep);
+    position: relative;
+    overflow: hidden;
+  }
+  .site-header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      -45deg, transparent, transparent 40px,
+      rgba(201,168,76,0.03) 40px, rgba(201,168,76,0.03) 41px
+    );
+  }
+  .header-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 64px 48px 56px;
+    position: relative;
+  }
+  .brand-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-weight: 500;
+  }
+  .brand-eyebrow::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(201,168,76,0.25);
+    max-width: 180px;
+  }
+  .header-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(44px, 5.5vw, 72px);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.0;
+    margin-bottom: 8px;
+  }
+  .header-title span { color: var(--gold); }
+  .header-sub {
+    font-size: 15px;
+    color: rgba(245,240,232,0.6);
+    margin-top: 16px;
+    font-weight: 300;
+    letter-spacing: 0.02em;
+  }
+  .header-meta {
+    display: flex;
+    gap: 36px;
+    margin-top: 44px;
+    flex-wrap: wrap;
+  }
+  .meta-item { display: flex; flex-direction: column; gap: 4px; }
+  .meta-label {
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    color: var(--gold);
+    text-transform: uppercase;
+    opacity: 0.8;
+    font-weight: 500;
+  }
+  .meta-value {
+    font-size: 14px;
+    color: var(--white);
+    font-weight: 500;
+  }
+  .gold-bar {
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold), transparent);
+  }
+
+  /* ── LAYOUT ── */
+  .main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 56px 48px 100px;
+  }
+  .section { margin-bottom: 72px; }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+  .section-num {
+    font-size: 11px;
+    color: var(--gold);
+    letter-spacing: 0.18em;
+    opacity: 0.8;
+    min-width: 28px;
+    font-weight: 500;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--navy);
+    letter-spacing: -0.01em;
+  }
+  .section-rule {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, var(--gold), rgba(201,168,76,0.08));
+  }
+
+  /* ── CARDS ── */
+  .card {
+    background: var(--white);
+    border-radius: 8px;
+    padding: 28px 32px;
+    border: 1px solid rgba(26,26,46,0.08);
+    box-shadow: 0 2px 12px rgba(26,26,46,0.05);
+  }
+  .card p { font-size: 15px; color: var(--charcoal); line-height: 1.72; margin-bottom: 10px; }
+  .card p:last-child { margin-bottom: 0; }
+  .card p strong { color: var(--navy); }
+  .card-gold { border-left: 4px solid var(--gold); }
+
+  /* ── TEAM GRID ── */
+  .team-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid rgba(26,26,46,0.12);
+    box-shadow: 0 4px 20px rgba(26,26,46,0.1);
+    margin-bottom: 20px;
+  }
+  .team-col { display: flex; flex-direction: column; }
+  .team-head {
+    background: var(--navy);
+    padding: 22px 28px;
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+  }
+  .team-col:first-child .team-head { border-right: 1px solid rgba(201,168,76,0.15); }
+  .team-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 4px;
+  }
+  .team-role {
+    font-size: 12px;
+    color: var(--gold);
+    letter-spacing: 0.06em;
+    font-style: italic;
+  }
+  .team-body {
+    background: #eef1f8;
+    padding: 24px 28px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .team-col:last-child .team-body { background: #f7f2e6; }
+  .team-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 14px;
+    color: var(--charcoal);
+    line-height: 1.5;
+  }
+  .team-item::before {
+    content: '▸';
+    color: var(--gold);
+    font-size: 10px;
+    margin-top: 3px;
+    flex-shrink: 0;
+  }
+
+  /* ── AVAILABILITY PILLS ── */
+  .avail-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid rgba(26,26,46,0.1);
+  }
+  .avail-cell {
+    padding: 18px 20px;
+    text-align: center;
+  }
+  .avail-cell.gold-bg  { background: var(--gold); }
+  .avail-cell.cream-bg { background: var(--cream-dark); }
+  .avail-title {
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 5px;
+  }
+  .avail-cell.gold-bg .avail-title  { color: var(--white); }
+  .avail-cell.cream-bg .avail-title { color: var(--navy); }
+  .avail-desc {
+    font-size: 12px;
+    line-height: 1.4;
+  }
+  .avail-cell.gold-bg .avail-desc  { color: rgba(255,255,255,0.8); }
+  .avail-cell.cream-bg .avail-desc { color: var(--muted); }
+
+  /* ── OPTION HEADER ── */
+  .option-header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    border-radius: 10px 10px 0 0;
+    overflow: hidden;
+    border: 1px solid rgba(26,26,46,0.12);
+    border-bottom: none;
+  }
+  .option-left {
+    background: var(--navy);
+    padding: 24px 28px;
+  }
+  .option-num {
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
+  .option-num .tag {
+    color: var(--gold-light);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    margin-left: 8px;
+    font-style: italic;
+  }
+  .option-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--white);
+  }
+  .option-right {
+    background: var(--gold);
+    padding: 24px 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 200px;
+  }
+  .option-fee-label {
+    font-size: 12px;
+    color: rgba(255,255,255,0.8);
+    margin-bottom: 6px;
+    letter-spacing: 0.06em;
+  }
+  .option-fee {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1;
+  }
+
+  /* ── SERVICE TABLE ── */
+  .service-table-wrap {
+    border: 1px solid rgba(26,26,46,0.12);
+    border-top: none;
+    border-bottom: none;
+    overflow: hidden;
+  }
+  .service-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .service-table thead tr { background: var(--navy-mid); }
+  .service-table thead th {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    padding: 12px 20px;
+    text-align: left;
+    font-weight: 500;
+  }
+  .service-table tbody tr { border-bottom: 1px solid rgba(26,26,46,0.07); }
+  .service-table tbody tr:last-child { border-bottom: none; }
+  .service-table tbody tr:nth-child(odd) td:first-child { background: var(--cream-dark); }
+  .service-table tbody tr:nth-child(even) td:first-child { background: #ede8db; }
+  .service-table td { padding: 14px 20px; font-size: 14px; vertical-align: top; }
+  .service-table td:first-child {
+    font-weight: 600;
+    color: var(--navy);
+    font-size: 13px;
+    width: 200px;
+    border-right: 1px solid rgba(26,26,46,0.06);
+  }
+  .service-table td:last-child { background: var(--white); }
+  .service-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+  }
+  .service-list li {
+    padding-left: 16px;
+    position: relative;
+    color: var(--charcoal);
+    line-height: 1.55;
+  }
+  .service-list li::before {
+    content: '–';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-weight: 700;
+  }
+  .note-li {
+    font-size: 12px !important;
+    color: var(--muted) !important;
+    font-style: italic;
+  }
+
+  .option-note {
+    background: #f0ebe0;
+    border: 1px solid rgba(26,26,46,0.1);
+    border-top: none;
+    border-radius: 0 0 10px 10px;
+    padding: 16px 24px;
+    font-size: 13.5px;
+    color: var(--charcoal);
+    line-height: 1.6;
+  }
+  .option-note strong { color: var(--navy); }
+
+  /* ── CONTINUATIVA ── */
+  .continuativa-table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid rgba(26,26,46,0.12);
+    box-shadow: 0 2px 16px rgba(26,26,46,0.07);
+  }
+  .continuativa-table thead tr { background: var(--navy); }
+  .continuativa-table thead th {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    padding: 14px 22px;
+    text-align: left;
+    font-weight: 500;
+  }
+  .continuativa-table tbody td {
+    padding: 18px 22px;
+    font-size: 14px;
+    vertical-align: top;
+    border-bottom: 1px solid rgba(26,26,46,0.07);
+  }
+  .continuativa-table tbody tr:last-child td { border-bottom: none; }
+  .continuativa-table .td-label { background: var(--cream-dark); font-weight: 600; color: var(--navy); width: 200px; }
+  .continuativa-table .td-label small { display: block; font-size: 12px; font-weight: 400; color: var(--muted); font-style: italic; margin-top: 4px; }
+  .continuativa-table .td-content { background: var(--white); }
+  .continuativa-table .td-price { background: var(--white); text-align: center; vertical-align: middle; font-weight: 700; color: var(--navy); font-size: 22px; white-space: nowrap; width: 160px; }
+  .continuativa-table .td-price small { display: block; font-size: 12px; font-weight: 400; color: var(--muted); font-style: italic; margin-top: 4px; }
+
+  /* Commission row */
+  .continuativa-table .tr-commission td { background: var(--navy); }
+  .continuativa-table .tr-commission .td-label-comm {
+    background: var(--gold);
+    padding: 18px 22px;
+    width: 200px;
+    vertical-align: middle;
+  }
+  .continuativa-table .tr-commission .td-label-comm .comm-pct {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 40px;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1;
+  }
+  .continuativa-table .tr-commission .td-label-comm small {
+    display: block;
+    font-size: 12px;
+    color: rgba(255,255,255,0.8);
+    margin-top: 4px;
+  }
+  .continuativa-table .tr-commission .td-content-comm {
+    background: var(--navy);
+    padding: 18px 22px;
+    vertical-align: top;
+  }
+
+  .example-box {
+    background: var(--cream-dark);
+    border-radius: 8px;
+    padding: 18px 22px;
+    border-left: 4px solid var(--gold);
+    font-size: 13.5px;
+    color: var(--charcoal);
+    line-height: 1.65;
+    margin-top: 16px;
+  }
+  .example-box strong { color: var(--navy); }
+
+  /* ── STEPS TABLE ── */
+  .steps-table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid rgba(26,26,46,0.12);
+    box-shadow: 0 2px 16px rgba(26,26,46,0.06);
+  }
+  .steps-table thead tr { background: var(--navy); }
+  .steps-table thead th {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    padding: 14px 20px;
+    text-align: left;
+    font-weight: 500;
+  }
+  .steps-table tbody tr { border-bottom: 1px solid rgba(26,26,46,0.07); background: var(--white); }
+  .steps-table tbody tr:last-child { border-bottom: none; }
+  .steps-table td { padding: 14px 20px; font-size: 14px; vertical-align: middle; }
+  .steps-table .td-num {
+    background: var(--cream-dark);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--navy);
+    text-align: center;
+    width: 52px;
+  }
+  .steps-table .td-timing {
+    color: var(--muted);
+    font-size: 13px;
+    font-style: italic;
+    white-space: nowrap;
+    width: 200px;
+  }
+
+  /* ── CONFRONTO TABLE ── */
+  .confronto-table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid rgba(26,26,46,0.12);
+    box-shadow: 0 2px 16px rgba(26,26,46,0.07);
+  }
+  .confronto-table thead tr { background: var(--navy); }
+  .confronto-table thead th {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 14px 20px;
+    text-align: center;
+    font-weight: 500;
+  }
+  .confronto-table thead th:first-child { text-align: left; color: var(--gold); }
+  .confronto-table thead th:nth-child(2) { color: rgba(255,255,255,0.6); }
+  .confronto-table thead th:nth-child(3) { color: var(--white); background: var(--gold); }
+  .confronto-table tbody tr { border-bottom: 1px solid rgba(26,26,46,0.07); }
+  .confronto-table tbody tr:last-child { border-bottom: none; }
+  .confronto-table tbody tr:nth-child(odd) { background: var(--white); }
+  .confronto-table tbody tr:nth-child(even) { background: var(--cream-dark); }
+  .confronto-table td {
+    padding: 13px 20px;
+    font-size: 14px;
+    vertical-align: middle;
+  }
+  .confronto-table td:first-child { font-weight: 500; color: var(--navy); }
+  .confronto-table td:nth-child(2) { text-align: center; color: var(--muted); font-size: 13px; }
+  .confronto-table td:nth-child(3) { text-align: center; font-weight: 600; color: var(--navy); font-size: 13px; }
+  .tr-total td { background: var(--navy) !important; padding: 16px 20px; }
+  .tr-total td:first-child { color: var(--white); font-size: 16px; font-weight: 600; }
+  .tr-total td:nth-child(2) { background: #8b3333 !important; text-align: center; }
+  .tr-total td:nth-child(2) span { color: var(--white); font-size: 18px; font-weight: 700; }
+  .tr-total td:nth-child(3) { background: var(--gold) !important; text-align: center; }
+  .tr-total td:nth-child(3) span { color: var(--white); font-size: 18px; font-weight: 700; }
+
+  /* ── QUOTE BOX ── */
+  .quote-box {
+    background: var(--white);
+    border-radius: 8px;
+    padding: 22px 28px;
+    border-left: 4px solid var(--gold);
+    border-top: 1px solid rgba(26,26,46,0.07);
+    border-right: 1px solid rgba(26,26,46,0.07);
+    border-bottom: 1px solid rgba(26,26,46,0.07);
+    font-size: 15px;
+    color: var(--navy);
+    font-style: italic;
+    line-height: 1.7;
+    box-shadow: 0 2px 8px rgba(26,26,46,0.04);
+  }
+
+  /* ── CLOSING ── */
+  .closing {
+    text-align: center;
+    padding: 40px 32px;
+    border: 1px solid rgba(201,168,76,0.4);
+    border-radius: 10px;
+    background: linear-gradient(135deg, var(--white), var(--cream));
+  }
+  .closing-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--navy);
+    font-style: italic;
+    margin-bottom: 12px;
+  }
+  .closing-email {
+    font-size: 14px;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+  }
+
+  /* ── FOOTER ── */
+  .site-footer {
+    background: var(--navy-deep);
+    padding: 24px 48px;
+    text-align: center;
+  }
+  .site-footer p {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: rgba(255,255,255,0.25);
+    text-transform: uppercase;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .header-inner > * {
+    animation: fadeUp 0.6s ease both;
+  }
+  .header-inner > *:nth-child(1) { animation-delay: 0.05s; }
+  .header-inner > *:nth-child(2) { animation-delay: 0.12s; }
+  .header-inner > *:nth-child(3) { animation-delay: 0.18s; }
+  .header-inner > *:nth-child(4) { animation-delay: 0.25s; }
+
+  @media (max-width: 768px) {
+    .main { padding: 32px 20px 60px; }
+    .header-inner { padding: 40px 24px 36px; }
+    .team-grid { grid-template-columns: 1fr; }
+    .avail-grid { grid-template-columns: 1fr 1fr; }
+    .option-header { grid-template-columns: 1fr; }
+    .option-right { min-width: unset; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-inner">
+    <div class="brand-eyebrow">Streetwise Consultancy &nbsp;·&nbsp; Riservato</div>
+    <h1 class="header-title">Proposta di<br><span>Collaborazione</span></h1>
+    <p class="header-sub">Esensia, Sliema Malta &nbsp;·&nbsp; Antonio Caruso & Sean O'Brien &nbsp;·&nbsp; Maggio 2026</p>
+    <div class="header-meta">
+      <div class="meta-item"><span class="meta-label">Preparato da</span><span class="meta-value">Antonio Caruso & Sean O'Brien</span></div>
+      <div class="meta-item"><span class="meta-label">Destinatari</span><span class="meta-value">Francesco & Giuseppe</span></div>
+      <div class="meta-item"><span class="meta-label">Data</span><span class="meta-value">Maggio 2026</span></div>
+      <div class="meta-item"><span class="meta-label">Validita</span><span class="meta-value">14 giorni</span></div>
+    </div>
+  </div>
+  <div class="gold-bar"></div>
+</header>
+
+<main class="main">
+
+  <!-- 01 TEAM -->
+  <section class="section">
+    <div class="section-header">
+      <span class="section-num">01</span>
+      <h2 class="section-title">Il team che lavora su Esensia</h2>
+      <div class="section-rule"></div>
+    </div>
+    <div class="card" style="margin-bottom:20px;">
+      <p>Come anticipato oggi al ristorante, collaboro attivamente con un socio in ambito marketing, disponibile senza costi aggiuntivi. Trovate il nostro profilo su <strong>streetwiseconsultancy.com</strong>.</p>
+      <p>Offriamo due figure al prezzo di una sola, con operativita continua 24 ore su 24 grazie al supporto del collega dall'Australia e a una presenza costante su tutti i fronti del progetto.</p>
+    </div>
+    <div class="avail-grid" style="margin-bottom:20px;">
+      <div class="avail-cell gold-bg">
+        <div class="avail-title">Disponibilita</div>
+        <div class="avail-desc">7 giorni su 7, risposta entro poche ore</div>
+      </div>
+      <div class="avail-cell cream-bg">
+        <div class="avail-title">Interlocutore unico</div>
+        <div class="avail-desc">Niente ticket, niente attese</div>
+      </div>
+      <div class="avail-cell cream-bg">
+        <div class="avail-title">Due professionisti</div>
+        <div class="avail-desc">Strategia + sistemi, inclusi nel prezzo</div>
+      </div>
+      <div class="avail-cell gold-bg">
+        <div class="avail-title">Visione completa</div>
+        <div class="avail-desc">Brand, sito, social e campagne: tutto allineato</div>
+      </div>
+    </div>
+    <div class="quote-box">
+      Un'agenzia assegna un account manager. Noi siamo due co-fondatori presenti direttamente con visione unica sul progetto e competenze interscambiabili.
+    </div>
+  </section>
+
+  <!-- 02 OPZIONE 1 -->
+  <section class="section">
+    <div class="section-header">
+      <span class="section-num">02</span>
+      <h2 class="section-title">Le due opzioni a progetto</h2>
+      <div class="section-rule"></div>
+    </div>
+
+    <div style="margin-bottom:32px;">
+      <div class="option-header">
+        <div class="option-left">
+          <div class="option-num">OPZIONE 1</div>
+          <div class="option-title">Fondamenta Digitali</div>
+        </div>
+        <div class="option-right">
+          <div class="option-fee-label">Fee unica:</div>
+          <div class="option-fee">2.500 euro</div>
+        </div>
+      </div>
+      <div class="service-table-wrap">
+        <table class="service-table">
+          <thead>
+            <tr><th>Area</th><th>Cosa include</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Strategia di Brand</td>
+              <td><ul class="service-list">
+                <li>Posizionamento: come Esensia si differenzia online dai competitor di Sliema</li>
+                <li>Tono di voce e linee guida per le comunicazioni digitali</li>
+                <li>Stile visivo: indicazioni su palette colori, font e tipo di immagini da usare</li>
+              </ul></td>
+            </tr>
+            <tr>
+              <td>Sito Web (5 pagine)</td>
+              <td><ul class="service-list">
+                <li>Home, menu, galleria, chi siamo, contatti con modulo prenotazione integrato</li>
+                <li>Integrazione TheFork per prenotazioni online dirette</li>
+                <li>Sito gestito da noi per tutta la durata della collaborazione</li>
+                <li>Contenuti, immagini e dominio rimangono di proprieta del ristorante</li>
+              </ul></td>
+            </tr>
+            <tr>
+              <td>SEO Locale e Visibilita Google</td>
+              <td><ul class="service-list">
+                <li>Google Business Profile ottimizzato: categorie, attributi, foto, menu caricato su Google</li>
+                <li>Google Reserve: prenotazioni dirette dal pannello Google, senza commissioni</li>
+                <li>Schema markup Restaurant: Google mostra valutazioni, orari e menu nei risultati</li>
+                <li>Title tag e meta description ottimizzati per keyword locali (fine dining Sliema, restaurant Malta)</li>
+                <li>Pagina menu ottimizzata: i nomi dei piatti vengono cercati direttamente su Google</li>
+                <li>Citation building: profilo coerente su TripAdvisor, TheFork e directory locali maltesi</li>
+                <li>Core Web Vitals e ottimizzazione mobile: impatto diretto sul ranking Google</li>
+              </ul></td>
+            </tr>
+            <tr>
+              <td>Instagram Setup</td>
+              <td><ul class="service-list">
+                <li>Ottimizzazione profilo: bio, highlights, link in bio con CTA prenotazione</li>
+                <li>Piano editoriale del primo mese: temi, format e calendario definiti</li>
+              </ul></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="option-note">
+        <strong>Ideale per:</strong> chi vuole costruire le fondamenta digitali prima di investire in gestione continuativa. Il sito, la visibilita su Google e il profilo Instagram partono nel modo giusto.
+      </div>
+    </div>
+
+    <!-- OPZIONE 2 -->
+    <div>
+      <div class="option-header">
+        <div class="option-left">
+          <div class="option-num">OPZIONE 2 <span class="tag">— CONSIGLIATA</span></div>
+          <div class="option-title">Lancio Completo</div>
+        </div>
+        <div class="option-right">
+          <div class="option-fee-label">Fee unica:</div>
+          <div class="option-fee">5.000 euro</div>
+        </div>
+      </div>
+      <div class="service-table-wrap">
+        <table class="service-table">
+          <thead>
+            <tr><th>Area</th><th>Cosa include</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Tutto dell'Opzione 1</td>
+              <td><ul class="service-list">
+                <li>Strategia di brand, sito web, SEO locale completo, Google Reserve, Instagram setup</li>
+              </ul></td>
+            </tr>
+            <tr>
+              <td>Gestione Social (3 mesi)</td>
+              <td><ul class="service-list">
+                <li>3-4 post a settimana piu stories quotidiane con CTA prenotazione</li>
+                <li>Reels settimanali: il formato con maggiore crescita organica nel 2025</li>
+                <li>Calendario editoriale mensile: temi, format, eventi speciali e DJ nights</li>
+              </ul></td>
+            </tr>
+            <tr>
+              <td>Content Direction e Editing</td>
+              <td><ul class="service-list">
+                <li>Coordinamento dei video prodotti da influencer e creator gia attivi sul profilo</li>
+                <li>Editing e post-produzione del materiale grezzo per Reels e Stories</li>
+                <li>Brief creativo per ogni collaborazione: obiettivo, mood, tono</li>
+                <li>Strategia di pubblicazione per massimizzare la portata organica</li>
+              </ul></td>
+            </tr>
+            <tr>
+              <td>SEO Avanzato</td>
+              <td><ul class="service-list">
+                <li>Ottimizzazione scheda TripAdvisor con gestione attiva delle recensioni</li>
+                <li>Strategia contenuti per long-tail keyword: romantic dinner Malta, where to eat Sliema</li>
+                <li>Alt text ottimizzato su tutte le immagini del sito per ricerche visive Google</li>
+              </ul></td>
+            </tr>
+            <tr>
+              <td>Campagna di Lancio</td>
+              <td><ul class="service-list">
+                <li>Setup campagna Meta Ads per awareness e prenotazioni dirette</li>
+                <li>Target: turisti internazionali, expat e residenti con alto potere di spesa a Malta</li>
+                <li>Budget pubblicitario separato, gestito in trasparenza con report mensile</li>
+              </ul></td>
+            </tr>
+            <tr>
+              <td>Report Mensile</td>
+              <td><ul class="service-list">
+                <li>Analisi performance: follower, reach, engagement, clic e prenotazioni</li>
+                <li>Raccomandazioni concrete per il mese successivo</li>
+              </ul></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="option-note">
+        <strong>Ideale per:</strong> chi vuole partire con tutto attivo: sito, SEO, social gestito per 3 mesi, editing dei video gia prodotti e prima campagna ads. &nbsp;<strong>Valore equivalente in agenzia: 10.000 - 24.000 euro.</strong>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 GESTIONE CONTINUATIVA -->
+  <section class="section">
+    <div class="section-header">
+      <span class="section-num">03</span>
+      <h2 class="section-title">Gestione continuativa (da mese 4 in poi)</h2>
+      <div class="section-rule"></div>
+    </div>
+    <div class="card" style="margin-bottom:20px;">
+      <p>Al termine del progetto iniziale, propongo di valutare una collaborazione continuativa con un <strong>canone mensile fisso di 1.000 euro</strong>, comprensivo di tutte le attivita concordate. A questo si aggiunge una commissione del <strong>7% sulle prenotazioni generate dalle campagne a pagamento</strong> e correttamente attribuibili. Nel caso in cui le campagne non generino prenotazioni tracciabili, non sarebbe prevista alcuna commissione.</p>
+    </div>
+    <table class="continuativa-table">
+      <thead>
+        <tr>
+          <th style="width:200px;">Voce</th>
+          <th>Cosa include</th>
+          <th style="width:160px; text-align:center;">Costo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="td-label">Canone mensile fisso<small>Gestione continuativa completa</small></td>
+          <td class="td-content">
+            <ul class="service-list">
+              <li>Gestione social media: post, stories, Reels e community management</li>
+              <li>SEO locale continuativo e aggiornamenti Google Business Profile</li>
+              <li>Aggiornamenti sito, gestione prenotazioni e monitoraggio recensioni</li>
+              <li>Content direction: brief per influencer, editing video mensile</li>
+              <li>Gestione campagne Meta Ads (budget pubblicitario separato)</li>
+              <li>Report mensile: traffico, prenotazioni, performance e raccomandazioni</li>
+            </ul>
+          </td>
+          <td class="td-price">1.000 euro<small>al mese</small></td>
+        </tr>
+        <tr class="tr-commission">
+          <td class="td-label-comm">
+            <div class="comm-pct">7%</div>
+            <small>per prenotazione da ads</small>
+          </td>
+          <td class="td-content-comm">
+            <ul class="service-list" style="color: rgba(245,240,232,0.8);">
+              <li style="color: rgba(245,240,232,0.85);">Sulle prenotazioni confermate e attribuibili alle campagne a pagamento</li>
+              <li style="color: rgba(245,240,232,0.85);">Tracking via codice promo dedicato su TheFork e UTM sui link ads</li>
+              <li style="color: rgba(245,240,232,0.85);">Nessuna commissione su prenotazioni organiche, dirette o da influencer</li>
+              <li style="color: rgba(245,240,232,0.85);">Rendicontazione chiara ogni mese: quante prenotazioni, da dove, importo commissione</li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="example-box">
+      <strong>Esempio pratico:</strong> 20 prenotazioni al mese generate dalle campagne ads, conto medio 80 euro a persona per 2 persone = 3.200 euro di valore generato. Commissione: 224 euro. Costo totale del mese: 1.224 euro. Se le campagne non portano prenotazioni tracciabili, la commissione e zero.
+    </div>
+  </section>
+
+  <!-- 04 PROSSIMI PASSI -->
+  <section class="section">
+    <div class="section-header">
+      <span class="section-num">04</span>
+      <h2 class="section-title">Prossimi passi</h2>
+      <div class="section-rule"></div>
+    </div>
+    <table class="steps-table">
+      <thead>
+        <tr>
+          <th style="width:52px;">#</th>
+          <th>Azione</th>
+          <th style="width:200px;">Tempistica</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="td-num">1</td>
+          <td>Selezione dell'opzione di collaborazione</td>
+          <td class="td-timing">Questa settimana</td>
+        </tr>
+        <tr>
+          <td class="td-num">2</td>
+          <td>Firma accordo e definizione dettagli operativi</td>
+          <td class="td-timing">Entro 14 giorni</td>
+        </tr>
+        <tr>
+          <td class="td-num">3</td>
+          <td>Kick-off: accessi ai profili, brief, prima sessione strategica</td>
+          <td class="td-timing">Prima settimana di lavoro</td>
+        </tr>
+        <tr>
+          <td class="td-num">4</td>
+          <td>Lancio sito web e prima campagna social</td>
+          <td class="td-timing">Fine del primo mese</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 05 CONFRONTO -->
+  <section class="section">
+    <div class="section-header">
+      <span class="section-num">05</span>
+      <h2 class="section-title">Perche non un'agenzia tradizionale</h2>
+      <div class="section-rule"></div>
+    </div>
+    <div class="card" style="margin-bottom:24px;">
+      <p>Un'agenzia tradizionale frammenta il lavoro tra piu figure: ognuno gestisce la sua parte, nessuno vede il quadro completo. Coordinamento scarso, tempi lunghi e costi alti.</p>
+      <p>Con questa collaborazione si ha un team di due persone che gestisce tutto in modo integrato. Un modello che allinea i nostri incentivi ai vostri risultati: parte del compenso e legata alle prenotazioni generate.</p>
+    </div>
+    <table class="confronto-table">
+      <thead>
+        <tr>
+          <th>Voce</th>
+          <th>Agenzia tradizionale</th>
+          <th>Streetwise Consultancy</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Sito web professionale</td><td>3.000 – 8.000 euro</td><td>Incluso nel progetto</td></tr>
+        <tr><td>SEO locale e Google Business</td><td>1.500 – 3.000 euro</td><td>Incluso nel progetto</td></tr>
+        <tr><td>Gestione social (3 mesi)</td><td>2.400 – 4.500 euro</td><td>Incluso nell'Opzione 2</td></tr>
+        <tr><td>Brand strategy e tono di voce</td><td>2.000 – 5.000 euro</td><td>Incluso nel progetto</td></tr>
+        <tr><td>Content direction e editing video</td><td>1.500 – 3.000 euro</td><td>Incluso nell'Opzione 2</td></tr>
+        <tr><td>Campagna pubblicitaria (gestione)</td><td>500 – 1.200 euro/mese</td><td>Incluso nell'Opzione 2</td></tr>
+        <tr><td>Disponibilita e reattivita</td><td>Ticket, tempi lunghi</td><td>7 giorni su 7, risposta rapida</td></tr>
+        <tr><td>Modello di remunerazione</td><td>Fee fisso indipendente dai risultati</td><td>1.000 euro fisso + 7% sui risultati</td></tr>
+        <tr class="tr-total">
+          <td>Totale stimato</td>
+          <td><span>10.000 – 24.000 euro</span></td>
+          <td><span>2.500 – 5.000 euro</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="quote-box" style="margin-top:20px;">
+      Il budget pubblicitario e sempre separato e gestito in totale trasparenza. Ogni euro speso viene rendicontato con report mensile.
+    </div>
+  </section>
+
+  <!-- CLOSING -->
+  <div class="closing">
+    <div class="closing-text">Esensia merita di essere conosciuta. Costruiamolo insieme.</div>
+    <div class="closing-email">antonio@streetwiseconsultancy.com &nbsp;·&nbsp; streetwiseconsultancy.com</div>
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <p>Esensia, Sliema Malta &nbsp;·&nbsp; Proposta di Collaborazione &nbsp;·&nbsp; Streetwise Consultancy &nbsp;·&nbsp; Riservato</p>
+</footer>
+
+</body>
+</html>
