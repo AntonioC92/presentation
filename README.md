@@ -1,2 +1,2 @@
-# collaboration-proposal
-repository for collaboration proposals
+# presentation
+repository for general presentations
